@@ -96,5 +96,27 @@
     </p>
     <p><button type='submit'>VOTE HERE</button></p>
 </form>
+<form>
+    <label for "shows">What TV Shows Did You Watch As A Kid? (select more than one)</label>
+    <br>
+    <select id="shows" name="shows[]" multiple>
+        <OPTION value="Looney Tunes">Looney Tunes</OPTION>
+        <option value="Double Dare">Double Dare</option>
+        <option value="Degrassi">Degrassi</option>
+        <option value="Scooby-Doo">Scooby-Doo</option>
+        <option value="Square One TV">Square One TV</option>
+    </select>
+    <button type='submit'>SUBMIT</button>
+</form>
+<h2>Select Testing</h2>
+<form>
+    <label for="college">Did You Attend College?</label>
+    <select id="college" name="college">
+        <option value="1">Yes</option>
+        <option selected value="2">No</option>
+        <option value="3">-----</option>
+    </select>
+    <br> <button type='submit'>SUBMIT</button>
+</form>
 </body>
 </html>
