@@ -9,17 +9,17 @@
         var_dump($_POST);
 	?>
 
-<form method="GET">
+<form method="POST">
     <p>
         <label for="username">Username</label>
-        <input id="username" name="username" type="text">
+        <input id="username" name="username" type="text" placeholder='Username'>
     </p>
     <p>
         <label for="password">Password</label>
-        <input id="password" name="password" type="password">
+        <input id="password" name="password" type="password" placeholder='Password'>
     </p>
     <p>
-        <input type="submit">
+        <button type="submit">Login</button>
     </p>
 </form>
 </body>
