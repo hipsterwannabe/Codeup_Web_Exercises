@@ -43,8 +43,58 @@
         <textarea name="email_body" rows='5' cols='100' placeholder='Message Here'></textarea>
     </p>
     <p>
-        <button type='send'>SEND</button>
+        Would you like to save this message to your Sent folder?
+        <label for='save_to_folder'>
+        <input type='checkbox' id='save_to_folder' name='save_to_folder' value='yes'>
+        </label>
     </p>
+    <p>
+        <button type="send">SEND</button>
+    </p>
+</form>
+<form>
+    <h2>Multiple Choice Test</h2>
+    <p>What basketball team will win the NBA Championship?</p>
+    <label for "q1a">
+        <input type='radio' id='q1a' name='q1' value='heat'>Miami Heat
+    </label>
+    <label>
+        <input type='radio' id='q1b' name='q1' value='pacers'>Indiana Pacers
+    </label>
+    <label>
+        <input type='radio' id='q1c' name='q1' value='thunder'>Oklahoma City Thunder
+    </label>
+    <label>
+        <input type='radio' id='q1d' name='q1' value='spurs'>SAN ANTONIO SPURS
+    </label>
+    <p>
+    <button type='submit'>SUBMIT</button>
+    </p>
+</form>
+<form>
+    <p>Are programmer jokes ever funny?</p>
+    <label for "q2a">
+        <input type='radio' id='q2a' name='q2' value='No'>No
+    </label>
+    <label>
+        <input type='radio' id='q2b' name='q2' value='Hellno'>Hell No
+    </label>
+    <label>
+        <input type='radio' id='q2c' name='q2' value="seriously">Seriously?
+    </label>
+    <p>
+    <button type='submit'>SUBMIT</button>
+    </p>
+</form>
+<form>
+    <p>Where would you like to work after Codeup?</p>
+    <label for='city1'><input type='checkbox' id='city1' name='city[]' value='San Antonio'>San Antonio</label>
+    <label for='city2'><input type='checkbox' id='city2' name='city[]' value='Austin'>Austin</label>    
+    <label for='city3'><input type='checkbox' id='city3' name='city[]' value='Dallas'>Dallas</label>
+    <label for='city4'><input type='checkbox' id='city4' name='city[]' value='Houston'>Houston</label>
+    <label for='city5'><input type='checkbox' id='city5' name='city[]' value='Wherever There Is Work'>Wherever There Is Work</label>
+    </p>
+    <p><button type='submit'>VOTE HERE</button></p>
 </form>
 </body>
 </html>
