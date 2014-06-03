@@ -35,9 +35,7 @@
 	array_push($address_book, $new_address);
 	write_csv($address_book, $filename);
 		
-
-		
-	var_dump($address_book);		
+	
 ?>
 <html>
 <title>Address Book</title>
@@ -54,6 +52,7 @@
 		<th>ZIP</th>
 		<th>Phone</th>
 	</tr>
+	<!-- table filled out with data -->
 	<? foreach ($address_book as $fields): ?>
 		<tr>
 		<? foreach($fields as $value): ?>
@@ -65,6 +64,7 @@
 
 	</tr>
 	</table>
+	<h2>Please enter your address (Fields with * are required.)</h2>
  	<!-- user inputs address information -->
 	<form method='POST' action='address_book.php'>
 		<label for 'name'>Name*</label>
