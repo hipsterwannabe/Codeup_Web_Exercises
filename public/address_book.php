@@ -2,32 +2,44 @@
 	//initialize file location
 	$new_address = [];
 	$address_book = [];
-	$filename = "data/adr_bk.csv";
-	//writing csv file
-	function write_csv($bigArray, $filename) {
-		if (is_writeable($filename)) {
-			$handle = fopen($filename, 'w');
-			foreach ($bigArray as $fields) {
-				fputcsv($handle, $fields);
+	$filename = 'data/adr_bk.csv';
+
+	class AddressDataStore {
+
+	    public $filename = '';
+
+	    function read_address_book()
+	    {
+	        $handle = fopen($this->filename, 'r');
+			$address_book = [];
+			while (!feof($handle)){
+				$row = fgetcsv($handle);
+				if (is_array($row)) {
+					$address_book[] = $row;
+				}
 			}
 			fclose($handle);
-		}
-	}
-	//reading the csv file
-	function read_file($address_book, $filename = 'data/adr_bk.csv'){
-		$handle = fopen($filename, 'r');
-		$address_book = [];
-		while (!feof($handle)){
-			$row = fgetcsv($handle);
-			if (is_array($row)) {
-				$address_book[] = $row;
+			return $address_book;
+	    }
+
+	    function write_address_book($addresses_array) 
+	    {
+	        if (is_writeable($this->filename)) {
+				$handle = fopen($this->filename, 'w');
+				foreach ($bigArray as $fields) {
+					fputcsv($handle, $fields);
+				}
+				fclose($handle);
 			}
-		}
-		fclose($handle);
-		return $address_book;
+	    }
+
 	}
 
-	$address_book = read_file($address_book, $filename);
+	$ads = new AddressDataStore;
+	$ads->filename = 'data/adr_bk.csv';
+	$address_book = $ads->read_address_book();
+
+	
 
 	//checking if required fields are entered; if so, add to address book, if not, display error msg
 	if(!empty($_POST['name']) && !empty($_POST['streetAddress']) && !empty($_POST['city']) && !empty($_POST['state']) && !empty($_POST['zipCode'])) {
@@ -35,7 +47,6 @@
 			$new_address[] = $value;
 		} 
 		array_push($address_book, $new_address);
-		write_csv($address_book, $filename);
 	} else {
 		foreach ($_POST as $key => $value) {
 			if (empty($value)) {
@@ -48,12 +59,7 @@
 	if (isset($_GET['id'])) {
             unset($address_book[$_GET['id']]);
             write_csv($address_book, $filename);
-        }
-	
-	
-	
-
-	
+    }
 ?>
 <html>
 <title>Address Book</title>
