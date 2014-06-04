@@ -35,12 +35,7 @@
 				}
 				fclose($handle);
 			}
-	    }
-
-	    public function __destruct()
-		{
-			echo "Class Dis-missed!\n";
-		}	    
+	    }    
 	}
 
 	$ads = new AddressDataStore("data/adr_bk.csv");
@@ -97,7 +92,6 @@
 	        $ads->writeAddressBook($address_book);
 	    }
 	}
-	unset($filename);
 ?>
 <html>
 <title>Address Book</title>
