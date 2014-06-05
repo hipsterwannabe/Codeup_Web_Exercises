@@ -1,0 +1,44 @@
+.box {
+	width: 172px;
+	height: 72px;
+	border: 1px solid black;
+	padding: 10px;
+	margin-bottom: 10px;
+	font-weight: bold;
+	color: white;
+	}
+
+h2 {
+	font-weight: bold;
+	text-decoration: blink;
+	font-family: "Comic Sans MS";
+}
+
+.red {
+	background-color: red;
+}
+
+.orange {
+	background-color: orange;
+	margin-left: 30px;
+}
+
+.yellow {
+	background-color: yellow;
+	margin-left: 60px;
+}
+
+.green {
+	background-color: green;
+	margin-left: 90px;
+}
+
+.blue {
+	background-color: blue;
+	margin-left: 120px;
+}
+
+.purple {
+	background-color: purple;
+	margin-left: 150px;
+}
