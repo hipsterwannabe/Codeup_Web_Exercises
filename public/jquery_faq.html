@@ -1,0 +1,64 @@
+<html>
+<head>
+	<title>jQuery FAQ</title>
+	<style type="text/css">
+		.invisible {
+			display: none;
+		}
+	</style>
+	<script src="js/jquery2.1.1.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#reveal').click(function(event) {
+				event.preventDefault();
+				$('dd').toggleClass('invisible');
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1>National Parks FAQ</h1>
+	<dl>
+		<dt>In what state is Badlands National Park?</dt>
+		<br>
+		<dd class="invisible">South Dakota</dd>
+		<br>
+		<dt>How large is Grand Canyon National Park?</dt>
+		<br>
+		<dd class="invisible">Over 1.2 million acres! Big, huh?</dd>
+		<br>
+		<dt>Can I cross into Mexico from Big Bend National Park?</dt>
+		<br>
+		<dd class="invisible">Yes, at the Boquillas Port.</dd>
+		<br>
+		<dt>What is the smallest national park?</dt>
+		<br>
+		<dd class="invisible">Thaddeus Kosciuszko National Memorial, in Pennsylvania</dd>
+		<br>
+		<dt>How many areas are there in the national park system?</dt>
+		<br>
+		<dd class="invisible">401</dd>
+		<br>
+		<dt>What is the largest national park?</dt>
+		<br>
+		<dd class="invisible">Wrangell-St. Elias National Park and Preserve, in Alaska</dd>
+		<br>
+		<dt>How many national parks are in Guam?</dt>
+		<br>
+		<dd class="invisible">1, War In The Pacific National Park</dd>
+		<br>
+		<dt>What is the newest National Park?</dt>
+		<br>
+		<dd class="invisible">Pinnacles National Park in California</dd>
+		<br>
+		<dt>What is the southernmost park?</dt>
+		<br>
+		<dd class="invisible">National Park of American Samoa, located... well, you know.</dd>
+		<br>
+		<dt>What is the northernmost park?</dt>
+		<br>
+		<dd class="invisible">Gates of the Arctic National Park and Preserve, in Alaska</dd>
+	</dl>
+	<a href="#" id="reveal">Click to view answers to FAQs.</a>
+</body>
+</html>
