@@ -5,6 +5,7 @@
 		.invisible {
 			display: none;
 		}
+		
 	</style>
 	<script src="js/jquery2.1.1.js"></script>
 	<script type="text/javascript">
@@ -13,7 +14,19 @@
 				event.preventDefault();
 				$('dd').toggleClass('invisible');
 			});
+
+			$('ul').each(function () {
+				$(this).children().first().css('font-weight', 'bold');
+				//$(this).next('li').css('font-weight', 'bold');
+			});
+
+			$('li').each(function(){
+				$(this).click(function(event) {
+					$(this).parent().toggleClass('invisible');
+				});
+			});
 		});
+
 	</script>
 </head>
 <body>
@@ -60,5 +73,28 @@
 		<dd class="invisible">Gates of the Arctic National Park and Preserve, in Alaska</dd>
 	</dl>
 	<a href="#" id="reveal">Click to view answers to FAQs.</a>
+	<h3>Hawai'i Volcanoes National Park</h3>
+	<ul>
+		<li>Located in Hawaii, on the island of Hawaii</li>
+		<li>Over 333,000 acres</li>
+		<li>Over 1.5 million visitors in 2013</li>
+		<li>Contains two volcanoes, Kīlauea and Mauna Loa</li>
+	</ul>
+	<br>
+	<h3>Chickasaw National Recreation Area</h3>
+	<ul>
+		<li>Located in Oklahoma</li>
+		<li>Located at 34.50399, -96.94965 latitude and longitude</li>
+		<li>Originally authorized in 1902 as Sulphur Springs Reservation</li>
+		<li>Contains Lake of the Arbuckles</li>
+	</ul>
+	<br>
+	<h3>Glacier National Park</h3>
+	<ul>
+		<li>Located in Montana</li>
+		<li>Offers over 740 miles of hiking</li>
+		<li>Going-to-the-Sun Road runs 50 miles across the park</li>
+		<li>Over 35 films set in the park</li>
+	</ul>
 </body>
 </html>
