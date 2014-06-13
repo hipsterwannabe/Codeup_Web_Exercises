@@ -1,0 +1,94 @@
+<html>
+<head>
+	<title>This Is Whack</title>
+	<style type="text/css" src="css/whack.css">
+		
+		.grid {
+			width: 606px;
+			height: 606px;
+			border: 1px solid black;
+			position: absolute;
+			margin: 150px 150px 150px 150px;
+			
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+			border: 1px solid black;
+			float: left;
+			border-collapse: collapse;
+		}
+
+		.mole {
+			display: none;
+			margin-top: 38px;
+			margin-left: 20px;
+			cursor: pointer;
+		}
+		
+		.score {
+			height: 20px;
+			width: 100px;
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<div class='score'>Score : 0</div>
+	<div class='grid'>
+			<div class='box'><img class="mole" src="img/goldmember10.jpg"></div>
+			<div class='box'><img class="mole" src="img/goldmember10.jpg"></div>
+			<div class='box'><img class="mole" src="img/goldmember10.jpg"></div>
+			<div class='box'><img class="mole" src="img/goldmember10.jpg"></div>
+			<div class='box'><img class="mole" src="img/goldmember10.jpg"></div>
+			<div class='box'><img class="mole" src="img/goldmember10.jpg"></div>
+			<div class='box'><img class="mole" src="img/goldmember10.jpg"></div>
+			<div class='box'><img class="mole" src="img/goldmember10.jpg"></div>
+			<div class='box'><img class="mole" src="img/goldmember10.jpg"></div>
+		
+	</div>
+
+	<script src="js/jquery2.1.1.js"></script>
+	<script type="text/javascript">
+		//define time limit and initialize score
+		var audio = new Audio('media/mole3.wav');
+
+		var score = 0;
+		//randomizer
+		function randomSquare(min, max) {
+			return Math.floor(Math.random() * (max - min + min)) + min;
+		};
+
+		var cells = $('.mole');
+		var moleInterval = startGame();
+
+		//game logic
+		function startGame() {
+			return setInterval(function() {
+				//determines square
+				var activeCell = cells[randomSquare(0,9)];
+				//fades moles in and out
+				$(activeCell).fadeIn(500);
+				$(activeCell).fadeOut(500);
+			}, 1000);
+		}
+
+		//whacking the mole!
+		$('.mole').click(function(event) {
+			audio.play();
+			$(this).fadeOut(250);
+			score += 1;
+			$('.score').html("Score = "+score);
+		});
+
+		//overall game interval
+		setTimeout(function() {
+			clearInterval(moleInterval);
+		}, 30000);
+
+
+
+
+	</script>
+</body>
+</html>

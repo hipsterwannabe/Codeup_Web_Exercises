@@ -1,0 +1,88 @@
+<style>
+		/*.hole {
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			background-color: black;
+			position: relative;
+		}*/
+		.grid {
+			width: 606px;
+			height: 606px;
+			border: 1px solid black;
+			position: absolute;
+			margin-top: 150px;
+			margin-left: 250px;
+			margin-bottom: 150px;
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+			border: 1px solid black;
+			float: left;
+			border-collapse: collapse;
+		}
+
+		#mole1 {
+			display: none;
+			margin-top: 38px;
+			margin-left: 20px;
+			cursor: pointer;
+		}
+		
+		#mole2 {
+			display: none;
+			margin-top: 38px;
+			margin-left: 20px;
+			cursor: pointer;
+		}
+
+		#mole3 {
+			display: none;
+			margin-top: 38px;
+			margin-left: 20px;
+			cursor: pointer;
+		}
+
+		#mole4 {
+			display: none;
+			margin-top: 38px;
+			margin-left: 20px;
+			cursor: pointer;
+		}
+
+		#mole5 {
+			display: none;
+			margin-top: 38px;
+			margin-left: 20px;
+			cursor: pointer;
+		}
+
+		#mole6 {
+			display: none;
+			margin-top: 38px;
+			margin-left: 20px;
+			cursor: pointer;
+		}
+
+		#mole7 {
+			display: none;
+			margin-top: 38px;
+			margin-left: 20px;
+			cursor: pointer;
+		}
+
+		#mole8 {
+			display: none;
+			margin-top: 38px;
+			margin-left: 20px;
+			cursor: pointer;
+		}
+
+		#mole9 {
+			display: none;
+			margin-top: 38px;
+			margin-left: 20px;
+			cursor: pointer;
+		}
+</style>
