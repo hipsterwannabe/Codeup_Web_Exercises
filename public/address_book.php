@@ -8,7 +8,7 @@
 	$ads = new AddressDataStore("data/adr_bk.csv");
 
 	//$ads->filename = 'data/adr_bk.csv'; (obsolete due to constructor)
-	$address_book = $ads->readAddressBook();
+	$address_book = $ads->read_csv();
 	
 
 	
@@ -19,7 +19,7 @@
 			$new_address[] = $value;
 		} 
 		array_push($address_book, $new_address);
-		$ads->writeAddressBook($address_book);
+		$ads->write_csv($address_book);
 	} else {
 		foreach ($_POST as $key => $value) {
 			if (empty($value)) {
@@ -31,7 +31,7 @@
 	//removing item if link is clicked
 	if (isset($_GET['id'])) {
             unset($address_book[$_GET['id']]);
-            $ads->writeAddressBook($address_book);
+            $ads->write_csv($address_book);
             
     }
 
@@ -54,9 +54,9 @@
 	        // load the new todos
 	        // merge with existing list
 	        $ups = new AddressDataStore($saved_filename);
-	        $addresses_uploaded = $ups->readAddressBook();
+	        $addresses_uploaded = $ups->read_csv();
 	        $address_book = array_merge($address_book, $addresses_uploaded);
-	        $ads->writeAddressBook($address_book);
+	        $ads->write_csv($address_book);
 	    }
 	}
 ?>
