@@ -8,7 +8,7 @@
 	$ads = new AddressDataStore("data/adr_bk.csv");
 
 	//$ads->filename = 'data/adr_bk.csv'; (obsolete due to constructor)
-	$address_book = $ads->read_csv();
+	$address_book = $ads->read();
 	
 
 	
@@ -16,11 +16,16 @@
 	//checking if required fields are entered; if so, add to address book, if not, display error msg
 	if(!empty($_POST['name']) && !empty($_POST['streetAddress']) && !empty($_POST['city']) && !empty($_POST['state']) && !empty($_POST['zipCode'])) {
 		foreach ($_POST as $key => $value) {
+			if (strlen($_POST[$key]) > 125) {
+				throw new Exception($_POST[$key] . "is longer than 125 characters");
+			}
+		}
+		foreach ($_POST as $key => $value) {
 			$new_address[] = $value;
 		} 
 		array_push($address_book, $new_address);
-		$ads->write_csv($address_book);
-	} else {
+		$ads->write($address_book);
+	 
 		foreach ($_POST as $key => $value) {
 			if (empty($value)) {
 				echo ucfirst($key) . " is empty, please enter.\n" ;
@@ -31,7 +36,7 @@
 	//removing item if link is clicked
 	if (isset($_GET['id'])) {
             unset($address_book[$_GET['id']]);
-            $ads->write_csv($address_book);
+            $ads->write($address_book);
             
     }
 
@@ -54,9 +59,9 @@
 	        // load the new todos
 	        // merge with existing list
 	        $ups = new AddressDataStore($saved_filename);
-	        $addresses_uploaded = $ups->read_csv();
+	        $addresses_uploaded = $ups->read();
 	        $address_book = array_merge($address_book, $addresses_uploaded);
-	        $ads->write_csv($address_book);
+	        $ads->write($address_book);
 	    }
 	}
 ?>
