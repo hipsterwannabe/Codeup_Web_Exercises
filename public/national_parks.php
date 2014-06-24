@@ -2,30 +2,46 @@
 
 function getOffset() {
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
-
     return ($page - 1) * 4;
 }
 
 
-
+//define which page user is on
 if (!empty($_GET)) {
     $pageID = $_GET['page'];
 } else {
-    $pageID = 0;
+    $pageID = 1;
+}
+
+//function 
+function getParks($dbc){
+    
+    if (!empty($_GET)) {
+        $pageID = $_GET['page'];
+    } else {
+        $pageID = 1;
+    };
+    $pageID = getOffset();
+    $stmt = $dbc->prepare('SELECT * FROM national_parks LIMIT :LIMIT OFFSET :OFFSET'); 
+    $stmt->bindValue(':LIMIT', 4, PDO::PARAM_INT);
+    $stmt->bindValue(':OFFSET', $pageID, PDO::PARAM_INT);
+    $stmt->execute();
+    $stmt = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $stmt;
 }
 
 
-$limit = 4;
-$offset = ($pageID * $limit);
+$offset = ($pageID * 4);
 
 $dbc = new PDO('mysql:host=127.0.0.1;dbname=codeup_pdo_test_db', 'greg', 'quiero');
 $dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$parks = $dbc->query('SELECT * FROM national_parks LIMIT ' . $limit . ' OFFSET ' . ($pageID * $limit))->fetchAll(PDO::FETCH_ASSOC);
-
 $count = $dbc->query('SELECT count(*) FROM national_parks')->fetchColumn();
 
-$numPages = floor($count / $limit);
+$numPages = ceil($count / 4);
+$prev = $pageID - 1;
+$next = $pageID + 1;
 
 
 ?>
@@ -52,9 +68,10 @@ $numPages = floor($count / $limit);
                 <th>State</th>
                 <th>Date Established</th>
                 <th>Area in Acres</th>
+                <th>Park Description</th>
             </tr>
 
-            <?php foreach ($parks as $park): ?>
+            <?php foreach (getParks($dbc) as $park): ?>
                 <tr>
                     <? foreach ($park as $key => $value) { ?>
         		<?= "<td>" . $value . "</td>"; ?>
@@ -63,11 +80,11 @@ $numPages = floor($count / $limit);
             <?php endforeach ?>
         </table>
         <ul class="pager">
-            <?  if ($pageID != 0) : ?>
-                    <li class="previous"><a href="?page=<?=$pageID - 1?>">&larr; Previous</a></li>
+            <?  if ($prev > 0) : ?>
+                    <li class="previous"><a href="?page=<?=$prev?>">&larr; Previous</a></li>
             <? endif; ?>
             <? if ($pageID < $numPages) : ?>
-                <li class="next"><a href="?page=<?= $pageID + 1 ?>">Next &rarr;</a></li>
+                <li class="next"><a href="?page=<?=$next?>">Next &rarr;</a></li>
             <? endif; ?>
         </ul>
     </div>
