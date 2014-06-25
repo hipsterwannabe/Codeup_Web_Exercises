@@ -29,8 +29,8 @@
             mainHeader.innerHTML = "Javascript is Cool";
         }
         
-        var cool = document.getElementById('cool');
-        cool.addEventListener('click', coolListen, false);
+        document.getElementById('cool').addEventListener('click', coolListen, false);
+        
         
         // todo: get the sub header element by id
         var subHeader = document.getElementById('sub-header');
@@ -39,8 +39,8 @@
             subHeader.style['color'] = "#00F";
         }
 
-        var color = document.getElementById('color');
-        color.addEventListener('click', colorListen, false);
+        document.getElementById('color').addEventListener('click', colorListen, false);
+        
         // todo: set the text color of subHeader to blue
         
         // todo: get all list items
@@ -57,8 +57,8 @@
                 }
             }
         }
-        var list = document.getElementById('list');
-        list.addEventListener('click', listListen, false);
+        document.getElementById('list').addEventListener('click', listListen, false);
+        
         
 
         // todo: get all elements with class name sub-paragraph
@@ -69,10 +69,8 @@
             subParagraphs[0].innerHTML = "Mission Accomplished!";
         }
 
-        var mission = document.getElementById('mission');
-        mission.addEventListener('click', missionListen, false);
+        document.getElementById('mission').addEventListener('click', missionListen, false);
         
-
     </script>
 
 </body>

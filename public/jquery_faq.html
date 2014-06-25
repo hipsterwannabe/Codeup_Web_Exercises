@@ -12,7 +12,7 @@
 		$(document).ready(function(){
 			$('#reveal').click(function(event) {
 				event.preventDefault();
-				$('dd').fadeToggle();
+				$('dd').slideToggle();
 			});
 
 			$('ul').each(function () {
@@ -22,7 +22,7 @@
 
 			$('h3').each(function(){
 				$(this).click(function(event) {
-					$(this).next().fadeToggle(1000);
+					$(this).next().slideToggle(1000);
 				});
 			});
 		});

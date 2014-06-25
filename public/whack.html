@@ -55,6 +55,7 @@
 	<script type="text/javascript">
 		//define time limit and initialize score
 		var audio = new Audio('media/mole3.wav');
+		var audio2 = new Audio('media/austin_yeahbaby.wav');
 
 		var score = 0;
 		//randomizer
@@ -87,11 +88,11 @@
 		//overall game interval
 		setTimeout(function() {
 			clearInterval(moleInterval);
-			audio = Audio('media/austin_yeahbaby.wav');
-			audio.play();
+			audio2.play();
 		}, 30000);
-
-
+		// would like to add this to play at end of game
+		
+		
 
 
 	</script>

@@ -13,7 +13,7 @@ if (!empty($_GET)) {
     $pageID = 1;
 }
 
-//function 
+//function to get parks info
 function getParks($dbc){
     
     if (!empty($_GET)) {

@@ -4,16 +4,40 @@ class Filestore {
 
     public $filename = '';
 
-    function __construct($filename = '') 
+    public function __construct($filename = '') 
     {
         // Sets $this->filename
         $this->filename = $filename;
+
+        $type = substr($this->filename, -3);
+        if ($type == 'csv'){
+            $this->is_csv = true;
+        }
     }
 
+     //function to determine if files is txt or csv
+    public function read() 
+    {
+        if ($this->is_csv) {
+            //need to return contents
+            return $this->read_csv();
+        } else {
+            return $this->read_lines();
+        }
+    }
+
+    public function write($array)
+    {
+        if ($this->is_csv) {
+            $this->write_csv($array);
+        } else {
+            $this->write_lines($array);
+        }
+    }
     /**
      * Returns array of lines in $this->filename
      */
-    function read_lines()
+    private function read_lines()
     {
     	 //if (is_readable($givenFile) && filesize($givenFile) > 0){
             $filename = $givenFile;
@@ -34,7 +58,7 @@ class Filestore {
     /**
      * Writes each element in $array to a new line in $this->filename
      */
-    function write_lines($array)
+    private function write_lines($array)
     {
     	//taking $todo_list array and saving to $filename
             //$filecontents is what will be written to file
@@ -50,7 +74,7 @@ class Filestore {
     /**
      * Reads contents of csv $this->filename, returns an array
      */
-    function read_csv()
+    private function read_csv()
     {
     	$handle = fopen($this->filename, 'r');
 			$address_book = [];
@@ -67,7 +91,7 @@ class Filestore {
     /**
      * Writes contents of $array to csv $this->filename
      */
-    function write_csv($array)
+    private function write_csv($array)
     {
     	if (is_writeable($this->filename)) {
 				$handle = fopen($this->filename, 'w');
